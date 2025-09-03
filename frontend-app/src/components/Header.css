@@ -1,0 +1,126 @@
+/* Import Outfit font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+/* Apply font globally */
+body {
+  font-family: 'Outfit', 'Century Gothic', Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: rgb(97, 13, 13);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+}
+
+.center-section {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #e4600d;
+  border-bottom: 2px solid rgba(241, 92, 6, 0.979);
+}
+
+/* Right section styles */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart-icon {
+  font-size: 34px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cart-icon:hover {
+  color: #e4600d;
+}
+
+.login-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #e4600d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #cf5205;
+}
+
+.cart-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.cart-count.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.admin-icon {
+  margin-left: 1rem;
+  color: #faf7f7;
+  transition: color 0.3s ease;
+}
+
+.admin-icon:hover {
+  color: #2590fc;
+  cursor: pointer;
+}

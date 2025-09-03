@@ -1,0 +1,15 @@
+.more-services-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.more-services-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.more-services-container p {
+  line-height: 1.6;
+}

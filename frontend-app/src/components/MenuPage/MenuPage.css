@@ -1,0 +1,410 @@
+/* Menu Page Styles */
+.menu-page {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Headings */
+.menu-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.menu-page h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #f77904, #d56403);
+  border-radius: 2px;
+}
+
+.menu-page h2 {
+  margin-bottom: 25px;
+  text-align: center;
+  color: #444;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Category Grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Category Cards */
+.category-card {
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px 15px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #f77904, #d56403);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.category-card:hover::before {
+  transform: translateY(0);
+}
+
+.category-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.05);
+}
+
+/* Back Button */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #f77904, #d56403);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(247, 121, 4, 0.3);
+}
+
+.back-button::before {
+  content: '←';
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.back-button:hover {
+  background: linear-gradient(90deg, #d56403, #b85402);
+  transform: translateX(-5px);
+  box-shadow: 0 6px 12px rgba(247, 121, 4, 0.4);
+}
+
+/* Category Detail View */
+.category-detail {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Menu Grid */
+.menu-grid {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+/* Menu Cards */
+.menu-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #f0f0f0;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover img {
+  transform: scale(1.05);
+}
+
+.menu-card h3 {
+  margin: 15px 0 8px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  padding: 0 15px;
+  font-size: 1.1rem;
+}
+
+.menu-card p {
+  margin: 0 0 12px;
+  color: #666;
+  text-align: center;
+  padding: 0 15px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.price {
+  font-weight: 700;
+  color: #f77904;
+  margin: 5px 0 15px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Order Button - UPDATED TO SOLID ORANGE */
+.order-button {
+  margin: 5px 0 15px;
+  background-color: rgb(255, 123, 0);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
+}
+
+.order-button:hover {
+  background-color: #e67e00; /* Darker orange for hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(255, 140, 0, 0.4);
+}
+
+/* Special Layout for MEALS Category */
+.category-detail[data-category="MEALS"] .menu-grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 25px;
+}
+
+.category-detail[data-category="MEALS"] .menu-card:nth-child(1),
+.category-detail[data-category="MEALS"] .menu-card:nth-child(2),
+.category-detail[data-category="MEALS"] .menu-card:nth-child(3),
+.category-detail[data-category="MEALS"] .menu-card:nth-child(4) {
+  grid-column: span 2;
+  height: 220px;
+}
+
+.category-detail[data-category="MEALS"] .menu-card:nth-child(1) img,
+.category-detail[data-category="MEALS"] .menu-card:nth-child(2) img,
+.category-detail[data-category="MEALS"] .menu-card:nth-child(3) img,
+.category-detail[data-category="MEALS"] .menu-card:nth-child(4) img {
+  height: 160px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .category-detail[data-category="MEALS"] .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .category-detail[data-category="MEALS"] .menu-card:nth-child(1),
+  .category-detail[data-category="MEALS"] .menu-card:nth-child(2),
+  .category-detail[data-category="MEALS"] .menu-card:nth-child(3),
+  .category-detail[data-category="MEALS"] .menu-card:nth-child(4) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-page {
+    padding: 15px;
+  }
+  
+  .menu-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .menu-page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .category-card {
+    padding: 15px 10px;
+  }
+  
+  .category-image {
+    height: 120px;
+  }
+  
+  .menu-card img {
+    height: 140px;
+  }
+  
+  .order-button {
+    width: 90%;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .menu-card {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+/* Loading and Error States */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #f77904;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  background-color: #fff8f8;
+  border-left: 4px solid #ff4d4d;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-container h3 {
+  color: #d32f2f;
+  margin-bottom: 15px;
+}
+
+.error-container p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.error-container details {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.error-container summary {
+  cursor: pointer;
+  color: #0066cc;
+  font-weight: 600;
+}
+
+.error-container pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Animation for menu items */
+.menu-card {
+  animation: slideUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for menu items */
+.menu-card:nth-child(1) { animation-delay: 0.1s; }
+.menu-card:nth-child(2) { animation-delay: 0.2s; }
+.menu-card:nth-child(3) { animation-delay: 0.3s; }
+.menu-card:nth-child(4) { animation-delay: 0.4s; }
+.menu-card:nth-child(5) { animation-delay: 0.5s; }
+.menu-card:nth-child(6) { animation-delay: 0.6s; }
+.menu-card:nth-child(7) { animation-delay: 0.7s; }
+.menu-card:nth-child(8) { animation-delay: 0.8s; }
