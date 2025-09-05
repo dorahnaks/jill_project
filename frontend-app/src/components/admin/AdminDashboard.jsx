@@ -1,15 +1,15 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import "./AdminDashboard.css";
+import React from 'react';
+import Sidebar from './Sidebar';  
+import DashboardHome from './Dashboardlayout'; // Import the dashboard home component
+import './admin.css';
 
 const AdminDashboard = () => {
   return (
     <div className="admin-dashboard" style={{ display: "flex", minHeight: "100vh" }}>
       <Sidebar />
-      <main className="admin-main-content" style={{ flex: 1, padding: "1.5rem", backgroundColor: "#f9f9f9" }}>
-        <Outlet />
-      </main>
+      <div className="dashboard-content" style={{ padding: '2rem', backgroundColor: '#f9f9f9ff' }}>
+        <DashboardHome /> {/* Render the dashboard home content */}
+      </div>
     </div>
   );
 };

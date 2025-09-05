@@ -8,23 +8,31 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  
+  // Safely access auth context
+  const auth = useAuth();
+  
+  if (!auth) {
+    return <div>Error: Authentication context not available</div>;
+  }
+  
+  const { login } = auth;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    
+
     try {
-      const result = await login(formData.email, formData.password);
+      const result = await login(formData.email, formData.password, 'admin');
       
       if (result.success) {
-        navigate("/admin/dashboard");
+        navigate("/admin"); 
       } else {
         setError(result.message || "Invalid email or password");
       }
