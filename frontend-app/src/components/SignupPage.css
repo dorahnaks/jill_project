@@ -1,69 +1,161 @@
+/* src/components/SignupPage.css */
+
 .signup-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 30px;
-  background: #fff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8ebf5 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 20px;
 }
 
-.signup-container h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #222;
-}
-
-.signup-form label {
-  display: block;
-  margin-top: 15px;
-  font-weight: 500;
-  color: #333;
-}
-
-.signup-form input {
+.signup-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  max-width: 450px;
+  overflow: hidden;
 }
 
-.signup-form button {
-  width: 100%;
-  margin-top: 25px;
-  padding: 10px;
-  background-color: #007BFF;
-  border: none;
+.signup-header {
+  background-color: #e4600d;
   color: white;
-  font-size: 17px;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 30px 25px;
+  text-align: center;
 }
 
-.signup-form button:hover {
-  background-color: #04f818;
+.signup-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.signup-header p {
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.signup-form {
+  padding: 30px 25px;
+}
+
+.error-box {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f7fafc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem top 50%;
+  background-size: 1.5em;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.btn-signup {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #e4600d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-signup:hover:not(.loading) {
+  background-color: #d03b07;
+  transform: translateY(-2px);
+}
+
+.btn-signup.loading {
+  pointer-events: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
 }
 
 .signup-footer {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.signup-footer p {
+  color: #718096;
+  font-size: 0.95rem;
 }
 
 .signup-footer a {
-  color: #0515f7;
+  color: #667eea;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .signup-footer a:hover {
   text-decoration: underline;
 }
 
-.error-message {
-  background-color: #ffe5e5;
-  color: #d8000c;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 5px;
-  font-weight: bold;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

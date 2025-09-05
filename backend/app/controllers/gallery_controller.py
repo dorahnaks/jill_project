@@ -18,8 +18,8 @@ def get_images():
         formatted_images = []
         for img in images:
             image_data = img.to_dict()
-            # Construct the full URL for the image
-            image_data['image_url'] = f'/images/gallery/{os.path.basename(img.image_url)}'
+            # Construct URL using /static/gallery/ path
+            image_data['image_url'] = f'/static/gallery/{os.path.basename(img.image_url)}'
             formatted_images.append(image_data)
         
         return jsonify(formatted_images), 200
@@ -35,18 +35,20 @@ def add_image():
         if not data or "image_url" not in data:
             return jsonify({"error": "image_url is required"}), 400
             
+        # Store only filename (path handled by static serving)
+        filename = os.path.basename(data["image_url"])
         new_image = GalleryImage(
             title=data.get("title", "Untitled"),
-            image_url=data["image_url"],  # Store original filename
+            image_url=filename,
             description=data.get("description", "")
         )
         
         db.session.add(new_image)
         db.session.commit()
         
-        # Format the response with the correct URL
+        # Return with correct URL
         response_data = new_image.to_dict()
-        response_data['image_url'] = f'/images/gallery/{os.path.basename(new_image.image_url)}'
+        response_data['image_url'] = f'/static/gallery/{filename}'
         
         return jsonify(response_data), 201
     except Exception as e:
@@ -61,6 +63,11 @@ def delete_image(id):
         image = GalleryImage.query.get(id)
         if not image:
             return jsonify({"error": "Image not found"}), 404
+            
+        # Remove file from disk
+        file_path = os.path.join(os.getcwd(), "app", "static", "gallery", image.image_url)
+        if os.path.exists(file_path):
+            os.remove(file_path)
             
         db.session.delete(image)
         db.session.commit()

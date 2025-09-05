@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.extensions import db
 from app.models.order_model import Order
 from app.models.customer_model import Customer
-from app.models.user_model import User
+from app.models.admin_user_model import AdminUser as User
 from app.status_codes import (
     HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND, HTTP_500_INTERNAL_SERVER_ERROR

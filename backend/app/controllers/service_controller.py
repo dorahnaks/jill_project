@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, url_for
 from app.models.service_model import Service
 from app.extensions import db
 import logging
@@ -18,7 +18,7 @@ def get_services():
     for service in services:
         service_data = service.to_dict()
         # Construct the full URL for the service image
-        service_data['image_url'] = f'/images/services/{os.path.basename(service.image_url)}'
+        service_data['image_url'] = url_for('serve_static', filename=f'services/{os.path.basename(service.image_url)}', _external=True)
         formatted_services.append(service_data)
     
     return jsonify(formatted_services), 200
@@ -32,10 +32,11 @@ def get_service(slug):
     
     # Format the response with the correct URL
     response_data = service.to_dict()
-    response_data['image_url'] = f'/images/services/{os.path.basename(service.image_url)}'
+    response_data['image_url'] = url_for('serve_static', filename=f'services/{os.path.basename(service.image_url)}', _external=True)
     
     return jsonify(response_data), 200
 
+# Register new service
 @service_bp.route("/register", methods=["POST"])
 def register_service():
     data = request.get_json()
@@ -50,11 +51,11 @@ def register_service():
     
     # Format the response with the correct URL
     response_data = new_service.to_dict()
-    response_data['image_url'] = f'/images/services/{os.path.basename(new_service.image_url)}'
+    response_data['image_url'] = url_for('serve_static', filename=f'services/{os.path.basename(new_service.image_url)}', _external=True)
     
     return jsonify(response_data), 201
 
-# Add new service
+# Create new service
 @service_bp.route("/", methods=["POST"])
 def create_service():
     data = request.get_json()
@@ -69,7 +70,7 @@ def create_service():
     
     # Format the response with the correct URL
     response_data = new_service.to_dict()
-    response_data['image_url'] = f'/images/services/{os.path.basename(new_service.image_url)}'
+    response_data['image_url'] = url_for('serve_static', filename=f'services/{os.path.basename(new_service.image_url)}', _external=True)
     
     return jsonify(response_data), 201
 
@@ -87,7 +88,7 @@ def update_service(slug):
     
     # Format the response with the correct URL
     response_data = service.to_dict()
-    response_data['image_url'] = f'/images/services/{os.path.basename(service.image_url)}'
+    response_data['image_url'] = url_for('serve_static', filename=f'services/{os.path.basename(service.image_url)}', _external=True)
     
     return jsonify(response_data), 200
 

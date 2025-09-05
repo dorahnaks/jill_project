@@ -1,9 +1,12 @@
-// src/utils/api.js
 import axios from "axios";
 
+// Get API URL from environment or fallback to current host
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL || 
+                         window.location.protocol + '//' + window.location.host;
+
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // Your Flask backend URL
-  timeout: 5000, // 5 second timeout
+  baseURL: REACT_APP_API_URL + "/api",
+  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -21,20 +24,20 @@ API.interceptors.request.use((req) => {
 
 // Response interceptor for error handling
 API.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log(`Received response for ${response.config.url}:`, response.status);
+    return response;
+  },
   (error) => {
-    // Handle common errors
+    console.error("API Error Details:");
     if (error.response) {
-      // Server responded with error status
-      console.error("API Error Response:", error.response.data);
+      console.error("Response Data:", error.response.data);
       console.error("Status:", error.response.status);
       console.error("Headers:", error.response.headers);
     } else if (error.request) {
-      // Request was made but no response received
-      console.error("API Request Error:", error.request);
+      console.error("No response received:", error.request);
     } else {
-      // Error in request setup
-      console.error("API Setup Error:", error.message);
+      console.error("Request setup error:", error.message);
     }
     
     return Promise.reject(error);
