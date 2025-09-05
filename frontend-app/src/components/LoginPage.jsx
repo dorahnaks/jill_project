@@ -26,24 +26,24 @@ const LoginPage = () => {
       setError("Please enter your password");
       return;
     }
-
+    
     setIsLoading(true);
-
+    
     try {
-      // Make API call to login endpoint
-      const response = await axios.post("http://localhost:5000/api/v1/auth/login", {
+      // Make API call to customer login endpoint
+      const response = await axios.post("http://localhost:5000/api/v1/auth/customer-login", {
         email,
         password
       });
-
+      
       // Handle successful login
-      const { access_token, refresh_token, user } = response.data;
-
-      // Store tokens in localStorage
+      const { access_token, refresh_token, customer } = response.data;
+      
+      // Store tokens and customer info in localStorage
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("refresh_token", refresh_token);
-      localStorage.setItem("user", JSON.stringify(user));
-
+      localStorage.setItem("customer", JSON.stringify(customer));
+      
       // Navigate to home page
       navigate("/");
       
